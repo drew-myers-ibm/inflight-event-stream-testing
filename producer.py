@@ -18,11 +18,9 @@ if not args:
 else:
     limit = int(args[0])
 
-print(limit)
-
 producer = KafkaProducer(bootstrap_servers=bootstrap_servers, security_protocol='SASL_SSL', sasl_mechanism='PLAIN', sasl_plain_username=username, sasl_plain_password=password)
 
-url = 'https://api.ibm.com/inflight/bluerun/geos/na/environments/cte/documents?sort=-received_at&limit=10'
+url = 'https://api.ibm.com/inflight/bluerun/geos/na/environments/cte/documents?sort=-received_at&limit=' + str(limit)
 
 headers = {'X-IBM-Client-Id': client_id, 'X-IBM-Client-Secret': client_secret}
 
