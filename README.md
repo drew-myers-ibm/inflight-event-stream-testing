@@ -20,3 +20,5 @@ IF_API_KEY_SECRET
 The `producer.py` script will pull the most recent data from the InFlight tracking data REST API and put it onto the configured kafka topic. By default it will pull the 10 most recent documents, that number can be changed by passing a number as an argument to the script.
 
 The `consumer.py` script consumes tracking events from the configured topic, grabs the payload IDs from the process events and then retrieves the payloads using the read Payload API and prints them.
+
+If using both together, start the consumer before the producer as the consumer starts at the latest offset and ingores messages from before it started.
